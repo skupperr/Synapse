@@ -204,7 +204,7 @@ export const SignUpView = () => {
                                                 bgOpacity="0.1"
                                                 speed="0.8"
                                                 color="white"
-                                            /> Sign in
+                                            /> Sign up
                                         </div>
                                     ) : (
                                         "Sign up"
