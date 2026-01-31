@@ -1,3 +1,5 @@
+"use client"
+
 import { authClient } from "@/lib/auth-client";
 import {
     DropdownMenu,
@@ -7,7 +9,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GeneratedAvatar } from "@/components/generated-avatar";
 import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -36,10 +38,11 @@ export const DashboardUserButton = () => {
                 {data.user.image ? (
                     <Avatar>
                         <AvatarImage src={data.user.image} />
+                        <AvatarFallback>{data.user.name?.charAt(0)?.toUpperCase() || "?"}</AvatarFallback>
                     </Avatar>
                 ) : (
                     <GeneratedAvatar
-                        seed={data.user.name}
+                        seed={data.user.name ?? data.user.email ?? "User"}
                         variant="initials"
                         className="size-9 mr-3"
                     />
